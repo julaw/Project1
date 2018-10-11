@@ -5,13 +5,18 @@ from datetime import date
 
 file= 'p1DataA.csv'
 student_records = []
+
+#get a list of dictionary objects from the file
+# #Input: file name
+# #Ouput: return a list of dictionary objects where
+# #the keys are from the first row in the data. and the values are each of the other rows
 def getData(file=file):
 	# open the file
 	infile=open(file,'r')
 	lines=infile.readlines()[1:]
 	infile.close()
 	dictstudents={}
-	student_records = []
+	data = []
 	for line in lines:
 		line = line.rstrip()
 		line=line.split(',')
@@ -25,39 +30,47 @@ def getData(file=file):
 		dictstudents['Email']=email
 		dictstudents['Class']=grade
 		dictstudents['DOB']=DOB
-		student_records.append(dictstudents) 
-	return student_records
+		data.append(dictstudents)
+	return data
 
-print(getData(file))
-# #
-# #
-# #
-# #
-# # get a list of dictionary objects from the file
-# #Input: file name
-# #Ouput: return a list of dictionary objects where
-# #the keys are from the first row in the data. and the values are each of the other rows
-#
-# 	pass
-#
-# def mySort(data,col):
+
+
+#def mySort(data,col):
 # # Sort based on key/column
 # #Input: list of dictionaries and col (key) to sort on
 # #Output: Return the first item in the sorted list as a string of just: firstName lastName
 #
-# 	pass
 #
 #
-# def classSizes(data):
+
+data=getData(file)
+
+def classSizes(data):
+	freshmancount=0
+	sophomorecount=0
+	juniorcount=0
+	seniorcount=0
+	listoftuples=[]
+	for studentdict in data:
+		if studentdict['Class']== "Freshman":
+			freshmancount+=1
+		elif studentdict['Class'] =="Sophomore":
+			sophomorecount+=1
+		elif studentdict['Class']=='Junior':
+			juniorcount+=1
+		else:
+			seniorcount+=1
+	listoftuples.append(freshmancount)
+	return listoftuples 
+
+print(classSizes(data))
+
 # # Create a histogram
 # # Input: list of dictionaries
 # # Output: Return a list of tuples sorted by the number of students in that class in
 # # descending order
 # # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
-#
-# 	pass
-#
-#
+
 # def findMonth(a):
 # # Find the most common birth month form this data
 # # Input: list of dictionaries
