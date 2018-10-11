@@ -11,11 +11,10 @@ def getData(file=file):
 	lines=infile.readlines()[1:]
 	infile.close()
 	dictstudents={}
+	student_records = []
 	for line in lines:
-		# get rid of \n
 		line = line.rstrip()
 		line=line.split(',')
-		# create a dictionary with all the information
 		fname=line[0]
 		lname=line[1]
 		email=line[2]
@@ -26,8 +25,9 @@ def getData(file=file):
 		dictstudents['Email']=email
 		dictstudents['Class']=grade
 		dictstudents['DOB']=DOB
-		student_records.append(dictstudents)
-		return student_records
+		student_records.append(dictstudents) 
+	return student_records
+
 print(getData(file))
 # #
 # #
