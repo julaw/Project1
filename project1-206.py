@@ -40,7 +40,7 @@ def mySort(data,col):
 	sorteddata= sorted(data, key=lambda x:x[col])
 	return sorteddata[0]['First']+' '+ sorteddata[0]['Last']
 
-mySort(getData(file),'First')
+
 
 # # Sort based on key/column
 # #Input: list of dictionaries and col (key) to sort on
@@ -86,26 +86,31 @@ def findMonth(data):
 	monthssorted= sorted(months, key=months.get, reverse=True)
 	return int(monthssorted[0])
 
-print(findMonth(data))
+
 
 # # Find the most common birth month form this data
 # # Input: list of dictionaries
 # # Output: Return the month (1-12) that had the most births in the data
 #
 
-def mySortPrint(data,col,fileName):
-
+def mySortPrint(data,col,outFile):
+	outFile = open("results.csv", "w")
 	sorteddata= sorted(data, key=lambda x:x[col])
-	return sorteddata[0]['First']+' '+ sorteddata[0]['Last']
+	for x in sorteddata:
+		new= x['First']+','+ x['Last']+ ','+ x['Email']+ '\n'
+		outFile.write(new)
 
 
+
+mySortPrint(data,'Email','sortprint.csv')
+
+mySortPrint(data,'First','new.csv')
 # #Similar to mySort, but instead of returning single
 # #Student, the sorted data is saved to a csv file.
 # # as fist,last,email
 # #Input: list of dictionaries, col (key) to sort by and output file name
 # #Output: No return value, but the file is written
 #
-# 	pass
 #
 # def findAge(a):
 # # def findAge(a):
