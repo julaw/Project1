@@ -3,7 +3,7 @@ import filecmp
 from dateutil.relativedelta import *
 from datetime import date
 
-file= 'p1DataA.csv'
+file= 'p1DataB.csv'
 
 
 #get a list of dictionary objects from the file
@@ -33,14 +33,12 @@ def getData(file=file):
 		data.append(dictstudents)
 	return data
 
-
+data=getData(file)
 
 
 def mySort(data,col):
 	sorteddata= sorted(data, key=lambda x:x[col])
 	return sorteddata[0]['First']+' '+ sorteddata[0]['Last']
-
-
 
 # # Sort based on key/column
 # #Input: list of dictionaries and col (key) to sort on
@@ -49,7 +47,7 @@ def mySort(data,col):
 #
 #
 
-data=getData(file)
+
 
 
 def classSizes(data):
@@ -102,9 +100,9 @@ def mySortPrint(data,col,outFile):
 
 
 
-mySortPrint(data,'Email','sortprint.csv')
+#mySortPrint(data,'Email','results.csv')
 
-mySortPrint(data,'First','new.csv')
+
 # #Similar to mySort, but instead of returning single
 # #Student, the sorted data is saved to a csv file.
 # # as fist,last,email
@@ -112,7 +110,9 @@ mySortPrint(data,'First','new.csv')
 # #Output: No return value, but the file is written
 #
 #
-# def findAge(a):
+#def findAge(data):
+
+
 # # def findAge(a):
 # # Input: list of dictionaries
 # # Output: Return the average age of the students and round that age to the nearest
@@ -120,7 +120,7 @@ mySortPrint(data,'First','new.csv')
 # # age in years.
 #look up date() on stack overflow
 #
-# 	pass
+#
 #
 #
 # ################################################################
